@@ -16,8 +16,86 @@ namespace Pizza
         public Form1()
         {
             InitializeComponent();
-            UpdateOrderSummary();
-            
+            ResetForm();
+        }
+
+        float GetSelectedSizePrice()
+        {
+            if (rbSamll.Checked)
+
+                return Convert.ToSingle(rbSamll.Tag);
+
+            else if (rbMedium.Checked)
+
+                return Convert.ToSingle(rbMedium.Tag);
+
+            else
+                return Convert.ToSingle(rbLarge.Tag);
+
+        }
+
+        float CalculateToppingsPrice()
+        {
+
+
+            float ToppingsTotalPrice = 0;
+
+            if (chkExtraChees.Checked)
+            {
+                ToppingsTotalPrice += Convert.ToSingle(chkExtraChees.Tag);
+            }
+
+
+            if (chkOnion.Checked)
+            {
+                ToppingsTotalPrice += Convert.ToSingle(chkOnion.Tag);
+            }
+
+            if (chkMushrooms.Checked)
+            {
+                ToppingsTotalPrice += Convert.ToSingle(chkMushrooms.Tag);
+            }
+
+            if (chkOlives.Checked)
+            {
+                ToppingsTotalPrice += Convert.ToSingle(chkOlives.Tag);
+            }
+
+            if (chkTomatos.Checked)
+            {
+                ToppingsTotalPrice += Convert.ToSingle(chkTomatos.Tag);
+            }
+
+            if (chkGreenPeppers.Checked)
+            {
+                ToppingsTotalPrice += Convert.ToSingle(chkTomatos.Tag);
+            }
+
+            return ToppingsTotalPrice;
+
+        }
+
+        float GetSelectedCrutPrice()
+        {
+            if (rbThinCrust.Checked)
+
+                return Convert.ToSingle(rbThinCrust.Tag);
+
+            else
+                return Convert.ToSingle(gbCrustType.Tag);
+
+        }
+
+        float CalculateTotalPrice()
+        {
+            return GetSelectedSizePrice() + CalculateToppingsPrice() + GetSelectedCrutPrice();
+        }
+
+        void UpdateTotalPrice()
+        {
+
+            lblTotalPrice.Text = "$" + CalculateTotalPrice().ToString();
+
         }
 
         void UpdateSize()
@@ -105,7 +183,7 @@ namespace Pizza
                 return;
             }
 
-            if (gbCrustType.Checked)
+            if (rbThinCrust.Checked)
             {
                 lblCrustType.Text = "Thick Crust";
                 return;
@@ -132,89 +210,6 @@ namespace Pizza
 
         }
 
-        float GetSelectedSizePrice()
-        {
-            if (rbSamll.Checked)
-
-                return Convert.ToSingle(rbSamll.Tag);
-
-            else if (rbMedium.Checked)
-
-                return Convert.ToSingle(rbMedium.Tag);
-
-            else
-                return Convert.ToSingle(rbLarge.Tag);
-
-        }
-
-        float CalculateToppingsPrice()
-        {
-
-
-            float ToppingsTotalPrice = 0;
-
-            if (chkExtraChees.Checked)
-            {
-                ToppingsTotalPrice += Convert.ToSingle(chkExtraChees.Tag);
-            }
-
-
-            if (chkOnion.Checked)
-            {
-                ToppingsTotalPrice += Convert.ToSingle(chkOnion.Tag);
-            }
-
-            if (chkMushrooms.Checked)
-            {
-                ToppingsTotalPrice += Convert.ToSingle(chkMushrooms.Tag);
-            }
-
-            if (chkOlives.Checked)
-            {
-                ToppingsTotalPrice += Convert.ToSingle(chkOlives.Tag);
-            }
-
-            if (chkTomatos.Checked)
-            {
-                ToppingsTotalPrice += Convert.ToSingle(chkTomatos.Tag);
-            }
-
-            if (chkGreenPeppers.Checked)
-            {
-                ToppingsTotalPrice += Convert.ToSingle(chkTomatos.Tag);
-            }
-
-
-
-            return ToppingsTotalPrice;
-
-
-
-        }
-
-        float GetSelectedCrutPrice()
-        {
-            if (rbThinCrust.Checked)
-
-                return Convert.ToSingle(rbThinCrust.Tag);
-
-            else
-                return Convert.ToSingle(gbCrustType.Tag);
-
-        }
-
-        float CalculateTotalPrice()
-        {
-            return GetSelectedSizePrice() + CalculateToppingsPrice() + GetSelectedCrutPrice();
-        }
-
-        void UpdateTotalPrice()
-        {
-
-            lblTotalPrice.Text = "$" + CalculateTotalPrice().ToString();
-
-        }
-
         void UpdateOrderSummary()
         {
             UpdateSize();
@@ -223,6 +218,11 @@ namespace Pizza
             UpdateWhereToEat();
             UpdateTotalPrice();
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            UpdateOrderSummary();
         }
 
         void ResetForm()
@@ -256,11 +256,10 @@ namespace Pizza
 
         }
 
-        private void btnOrderPizza_Click(object sender, EventArgs e)
+        private void btnOrderPizza_Click_1(object sender, EventArgs e)
         {
-
             if (MessageBox.Show("Confirm Order", "Confirm",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+               MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 MessageBox.Show("Order Placed Successfully", "Success",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -278,19 +277,37 @@ namespace Pizza
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
-        private void rbMedium_CheckedChanged(object sender, EventArgs e)
+        private void btnResetForm_Click(object sender, EventArgs e)
         {
-            UpdateSize();
-        }
-
-        private void rbLarge_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateSize();
+            ResetForm();
         }
 
         private void rbSamll_CheckedChanged(object sender, EventArgs e)
         {
             UpdateSize();
+        }
+
+        private void rbMedium_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateSize();
+
+        }
+
+        private void rbLarge_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateSize();
+
+        }
+
+        private void gbCrustType_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateCrust();
+        }
+
+        private void rbThinCrust_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateCrust();
+
         }
 
         private void chkExtraChees_CheckedChanged(object sender, EventArgs e)
@@ -318,19 +335,9 @@ namespace Pizza
             UpdateToppings();
         }
 
-        private void chckGreenPeppers_CheckedChanged(object sender, EventArgs e)
+        private void chkGreenPeppers_CheckedChanged(object sender, EventArgs e)
         {
             UpdateToppings();
-        }
-
-        private void rbThinCrust_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateCrust();
-        }
-
-        private void rbThickCrust_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateCrust();
         }
 
         private void rbEatIn_CheckedChanged(object sender, EventArgs e)
@@ -343,15 +350,6 @@ namespace Pizza
             UpdateWhereToEat();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            UpdateOrderSummary();
-
-        }
-
-        private void btnResetForm_Click(object sender, EventArgs e)
-        {
-            ResetForm();
-        }
     }
+      
 }
