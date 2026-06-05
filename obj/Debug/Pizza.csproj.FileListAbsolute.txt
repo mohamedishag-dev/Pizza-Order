@@ -8,3 +8,13 @@ E:\Profects\Pizza\obj\Debug\Pizza.csproj.GenerateResource.cache
 E:\Profects\Pizza\obj\Debug\Pizza.csproj.CoreCompileInputs.cache
 E:\Profects\Pizza\obj\Debug\Pizza.exe
 E:\Profects\Pizza\obj\Debug\Pizza.pdb
+E:\Profects\Pizza-Order\bin\Debug\Pizza.exe.config
+E:\Profects\Pizza-Order\bin\Debug\Pizza.exe
+E:\Profects\Pizza-Order\bin\Debug\Pizza.pdb
+E:\Profects\Pizza-Order\obj\Debug\Pizza.csproj.AssemblyReference.cache
+E:\Profects\Pizza-Order\obj\Debug\Pizza.Form1.resources
+E:\Profects\Pizza-Order\obj\Debug\Pizza.Properties.Resources.resources
+E:\Profects\Pizza-Order\obj\Debug\Pizza.csproj.GenerateResource.cache
+E:\Profects\Pizza-Order\obj\Debug\Pizza.csproj.CoreCompileInputs.cache
+E:\Profects\Pizza-Order\obj\Debug\Pizza.exe
+E:\Profects\Pizza-Order\obj\Debug\Pizza.pdb

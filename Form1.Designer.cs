@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblToppings = new System.Windows.Forms.Label();
             this.lblWhereToEat = new System.Windows.Forms.Label();
@@ -79,14 +80,13 @@
             // 
             // lblToppings
             // 
-            this.lblToppings.AutoSize = true;
             this.lblToppings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblToppings.ForeColor = System.Drawing.Color.Black;
             this.lblToppings.Location = new System.Drawing.Point(77, 103);
             this.lblToppings.Name = "lblToppings";
-            this.lblToppings.Size = new System.Drawing.Size(68, 13);
+            this.lblToppings.Size = new System.Drawing.Size(173, 46);
             this.lblToppings.TabIndex = 9;
-            this.lblToppings.Text = "No Toppings";
+            this.lblToppings.Text = "No Toppings\r\n";
             // 
             // lblWhereToEat
             // 
@@ -477,8 +477,9 @@
             this.Controls.Add(this.gpCrustType);
             this.Controls.Add(this.gbToppings);
             this.Controls.Add(this.gbSize);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Pizza";
+            this.Text = "Artizana\'s Pizza";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gpOrderSummary.ResumeLayout(false);
             this.gpOrderSummary.PerformLayout();
@@ -498,7 +499,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label lblToppings;
         private System.Windows.Forms.Label lblWhereToEat;
         private System.Windows.Forms.Label lblCrustType;
         private System.Windows.Forms.Label lblSize;
@@ -528,6 +528,7 @@
         private System.Windows.Forms.RadioButton rbSamll;
         private System.Windows.Forms.GroupBox gbToppings;
         private System.Windows.Forms.GroupBox gbSize;
+        private System.Windows.Forms.Label lblToppings;
     }
 }
 
